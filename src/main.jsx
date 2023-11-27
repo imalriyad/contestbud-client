@@ -5,7 +5,7 @@ import "./index.css";
 import router from "./Router/Router";
 import MainLayout from "./Layout/MainLayout";
 import {
-  useQueryClient,
+
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
