@@ -2,6 +2,7 @@
 
 "use client";
 import { Button, Card } from "keep-react";
+import { Link } from "react-router-dom";
 export const ContestCard = ({ item }) => {
   const { _id, contestName, image, participants, contestDetails } = item;
   return (
@@ -53,9 +54,9 @@ export const ContestCard = ({ item }) => {
               <h1 className="text-xs md:text-sm font-medium">Participients</h1>
             </div>
 
-            <Button size="xs" className="bg-[#0ECDB9] ml-8 ">
+           <Link to={`/contest-details/${_id}`}> <Button size="xs" className="bg-[#0ECDB9] ml-8 ">
               View Details
-            </Button>
+            </Button></Link>
           </div>
         </div>
       </div>

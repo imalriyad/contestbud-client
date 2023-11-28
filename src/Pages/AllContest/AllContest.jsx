@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "keep-react";
 import useAllContest from "../../Hooks/useAllContest";
 import { ContestCard } from "./ContestCard";
@@ -7,7 +8,7 @@ import { useState } from "react";
 import { RiMedal2Fill } from "react-icons/ri";
 
 const AllContest = () => {
-  const [allContest] = useAllContest();
+  const [allContest, isPending] = useAllContest();
   const medicalContest = allContest?.filter(
     (contest) => contest.tags === "medical"
   );
@@ -20,8 +21,15 @@ const AllContest = () => {
   const gamingContest = allContest?.filter(
     (contest) => contest.tags === "gaming"
   );
-  const tags = ["all", "business","gaming", "medical", "writing"];
+  const tags = ["all", "business", "gaming", "medical", "writing"];
   const [seeMore, setSeeMore] = useState(false);
+
+  if (isPending) {
+    return (
+      <div className="w-16 my-[20%] h-16 mx-auto border-4 border-dashed border-black rounded-full animate-spin border-mainColor"></div>
+    );
+  }
+
   return (
     <div className="pb-10">
       <Tabs>
@@ -48,15 +56,19 @@ const AllContest = () => {
                   <ContestCard item={item} key={item._id}></ContestCard>
                 ))}
           </div>
-          <div className=" mt-6 text-center ">
-            <Button
-              onClick={() => setSeeMore(!seeMore)}
-              size={"xs"}
-              className="bg-[#0ECDB9] mx-auto"
-            >
-              {seeMore ? "See Less" : "See More"}
-            </Button>
-          </div>
+          {allContest?.length > 0 ? (
+            <div className=" mt-6 text-center ">
+              <Button
+                onClick={() => setSeeMore(!seeMore)}
+                size={"xs"}
+                className="bg-[#0ECDB9] mx-auto"
+              >
+                {seeMore ? "See Less" : "See More"}
+              </Button>
+            </div>
+          ) : (
+            ""
+          )}
         </TabPanel>
 
         {/* businessContest*/}
