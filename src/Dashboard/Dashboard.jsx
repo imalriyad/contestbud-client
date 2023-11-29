@@ -7,11 +7,10 @@ import useAuth from "../Hooks/useAuth";
 const Dashboard = () => {
   const [userRole] = useUserRole();
   const { user } = useAuth();
-  console.log(userRole.role);
   //   console.log(user && userRole.role === "admin");
   return (
-    <div className="flex gap-4">
-      <div className="bg-success  menu menu-vertical space-y-2 min-h-screen flex flex-col text-white">
+    <div className="md:flex justify-between gap-4">
+      <div className="bg-success min-w-fit menu menu-vertical space-y-2 md:min-h-screen md:pb-0 pb-4 flex flex-col text-white">
         {/* Admin only */}
         {user && userRole?.role === "admin" ? (
           <>
@@ -87,7 +86,7 @@ const Dashboard = () => {
         </>:''}
       
       </div>
-      <div>
+      <div className="w-full">
         <Outlet></Outlet>
       </div>
     </div>

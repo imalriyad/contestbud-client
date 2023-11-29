@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { useLoaderData } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
-import { toast } from "react-toastify";
+import swal from "sweetalert";
 const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
@@ -73,16 +73,8 @@ const CheckoutForm = () => {
             .then((res) => {
               console.log(res);
               if (res.data.message === 'Participants field updated successfully') {
-                toast.success("🎉 Payment Successful!", {
-                  position: "top-center",
-                  autoClose: 2000,
-                  hideProgressBar: false,
-                  closeOnClick: true,
-                  pauseOnHover: true,
-                  draggable: true,
-                  progress: undefined,
-                  theme: "light",
-                });
+                swal("Congrats", "Payment Successful and Registartion Done for this Contest!", "success");
+
               }
             });
         }

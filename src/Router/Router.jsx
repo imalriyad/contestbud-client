@@ -10,6 +10,7 @@ import Payment from "../Payment/Payment";
 import ErrorPage from "../Pages/ErrorPage";
 import Dashboard from "../Dashboard/Dashboard";
 import AdminRoute from "../Private/AdminRoute";
+import ManageUser from "../Dashboard/ManageUser/ManageUser";
 
 const router = createBrowserRouter([
   {
@@ -58,7 +59,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "dashboard/manage-user",
-        element:<AdminRoute></AdminRoute>
+        element:<AdminRoute><ManageUser></ManageUser></AdminRoute>
       },
       {
         path: "dashboard/manage-contest",
