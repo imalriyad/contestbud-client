@@ -27,14 +27,39 @@ const ManageContest = () => {
       }
     });
   };
+
+  const handleUpdateStatus = (id) => {
+    swal({
+      title: "Are you sure?",
+      text: `You want Confirm this Contest `,
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        axiosSecure
+          .patch(`/update-contest-status/${id}`, { status: "confirm" })
+          .then((res) => {
+            if (res.data.modifiedCount > 0) {
+              swal(`Congrats! This Contest has been added!`, {
+                icon: "success",
+              });
+              refetch();
+            }
+          });
+      }
+    });
+  };
   return (
     <div className="px-4 space-y-4 py-4">
-     
-      <h1 className="text-2xl md:text-4xl">Totoal {allContest?.length} Contest Found</h1>
+      <h1 className="text-2xl md:text-4xl">
+        Totoal {allContest?.length} Contest Found
+      </h1>
       {allContest?.map((item) => (
         <ContestCard
           item={item}
           handleDelete={handleDelete}
+          handleUpdateStatus={handleUpdateStatus}
           key={item._id}
         ></ContestCard>
       ))}

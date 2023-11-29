@@ -3,8 +3,10 @@
 "use client";
 import { Button, Card } from "keep-react";
 import { Link } from "react-router-dom";
-export const ContestCard = ({ item ,handleDelete}) => {
-  const { _id, contestName, image, participants, contestDetails } = item;
+export const ContestCard = ({ item, handleDelete, handleUpdateStatus }) => {
+  const { _id, contestName, image, participants, contestDetails, status } =
+    item;
+
   return (
     <Card className="md:p-6 w-full min-w-full p-5  border-y-gray-200 border-r-gray-200 border-l-8 border-l-[#0ECDB9] ">
       <div className="md:flex gap-6">
@@ -54,14 +56,35 @@ export const ContestCard = ({ item ,handleDelete}) => {
               <h1 className="text-xs md:text-sm font-medium">Participients</h1>
             </div>
 
-           <Link to={`/contest-details/${_id}`}> <Button size="xs" className="bg-[#0ECDB9] ml-8 ">
-              View Details
-            </Button></Link>
-            {
-              handleDelete?<Button onClick={()=>handleDelete(_id)} size="xs" className="bg-[#0ECDB9] ml-8 ">
-              Delete
-             </Button>:''
-            }
+            {!handleUpdateStatus ? (
+              <Link to={`/contest-details/${_id}`}>
+                {" "}
+                <Button size="xs" className="bg-[#0ECDB9] ml-8 ">
+                  View Details
+                </Button>
+              </Link>
+            ) : (
+              <Button
+                onClick={() => handleUpdateStatus(_id)}
+                size="xs"
+                className={`ml-8 ${
+                  status === "pending" ? "bg-red-500 text-white" : "bg-[#0ECDB9]"
+                }`}
+              >
+                {status}
+              </Button>
+            )}
+            {handleDelete ? (
+              <Button
+                onClick={() => handleDelete(_id)}
+                size="xs"
+                className="bg-[#0ECDB9] ml-8 "
+              >
+                Delete
+              </Button>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>

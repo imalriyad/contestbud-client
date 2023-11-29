@@ -70,7 +70,7 @@ export const NavbarCompo = () => {
               >
                 <div className="w-10 rounded-full">
                   <img
-                    alt="Tailwind CSS Navbar component"
+                    alt="dp"
                     src={user?.photoURL}
                   />
                 </div>
