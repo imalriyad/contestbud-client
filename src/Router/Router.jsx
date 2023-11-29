@@ -7,11 +7,15 @@ import Login from "../Form/Login";
 import Registration from "../Form/Registration";
 import PrivateRoute from "../Private/PrivateRoute";
 import Payment from "../Payment/Payment";
+import ErrorPage from "../Pages/ErrorPage";
+import Dashboard from "../Dashboard/Dashboard";
+import AdminRoute from "../Private/AdminRoute";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -25,7 +29,7 @@ const router = createBrowserRouter([
         path: "/cheakout/:id",
         element: <Payment></Payment>,
         loader: ({ params }) =>
-        fetch(`http://localhost:5000/api/v1/get-all-contest/${params.id}`),
+          fetch(`http://localhost:5000/api/v1/get-all-contest/${params.id}`),
       },
       {
         path: "/contest-details/:id",
@@ -45,7 +49,21 @@ const router = createBrowserRouter([
         path: "/registration",
         element: <Registration></Registration>,
       },
-      
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <AdminRoute><Dashboard></Dashboard></AdminRoute>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: "dashboard/manage-user",
+        element:<AdminRoute></AdminRoute>
+      },
+      {
+        path: "dashboard/manage-contest",
+        element:<AdminRoute></AdminRoute>
+      },
     ],
   },
 ]);
