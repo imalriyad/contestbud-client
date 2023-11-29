@@ -1,6 +1,6 @@
 
 import { Button } from "keep-react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { RiMedal2Fill } from "react-icons/ri";
 import Countdown from "react-countdown";
 import { FiCornerRightDown } from "react-icons/fi";
@@ -8,7 +8,7 @@ import { FiCornerRightDown } from "react-icons/fi";
 const ContestDetails = () => {
   const loadedContest = useLoaderData();
   const {
-    // _id,
+    _id,
     contestName,
     image,
     participants,
@@ -132,9 +132,9 @@ const ContestDetails = () => {
                       </div>
                     </div>
 
-                    <Button size={"xs"} className="bg-[#0ECDB9] w-full ">
+                   <Link to={`/cheakout/${_id}`}> <Button size={"xs"} className="bg-[#0ECDB9] w-full ">
                       Join Contest <RiMedal2Fill className="ml-1" />
-                    </Button>
+                    </Button></Link>
                   </div>
                 );
               }

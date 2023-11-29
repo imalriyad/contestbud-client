@@ -3,9 +3,9 @@ import useAuth from "../Hooks/useAuth";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 const Google = () => {
-  const { googleLogin, user } = useAuth();
+  const { googleLogin } = useAuth();
   const axiosPublic = useAxiosPublic();
-  console.log(user);
+
   const handleGoogleLogin = async () => {
     googleLogin()
       .then(async (res) => {

@@ -5,6 +5,8 @@ import AllContest from "../Pages/AllContest/AllContest";
 import ContestDetails from "../Pages/ContestDetails/ContestDetails";
 import Login from "../Form/Login";
 import Registration from "../Form/Registration";
+import PrivateRoute from "../Private/PrivateRoute";
+import Payment from "../Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -20,8 +22,18 @@ const router = createBrowserRouter([
         element: <AllContest></AllContest>,
       },
       {
+        path: "/cheakout/:id",
+        element: <Payment></Payment>,
+        loader: ({ params }) =>
+        fetch(`http://localhost:5000/api/v1/get-all-contest/${params.id}`),
+      },
+      {
         path: "/contest-details/:id",
-        element: <ContestDetails></ContestDetails>,
+        element: (
+          <PrivateRoute>
+            <ContestDetails></ContestDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/api/v1/get-all-contest/${params.id}`),
       },
@@ -31,8 +43,9 @@ const router = createBrowserRouter([
       },
       {
         path: "/registration",
-        element:<Registration></Registration>,
+        element: <Registration></Registration>,
       },
+      
     ],
   },
 ]);

@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Google from "./Google";
 import { useForm } from "react-hook-form";
 import useAuth from "../Hooks/useAuth";
@@ -8,6 +8,9 @@ import { toast } from "react-toastify";
 
 const Login = () => {
   const { login } = useAuth();
+  const navigate = useNavigate();
+  const { state } = useLocation();
+   
   const {
     register,
     handleSubmit,
@@ -29,6 +32,7 @@ const Login = () => {
           progress: undefined,
           theme: "light",
         });
+        navigate(state ? state : "/");
       })
       .catch((err) => toast.error(`${err.message.slice(17).replace(")", "")}`));
   };

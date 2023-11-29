@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 
 export const NavbarCompo = () => {
   const { user, logout } = useAuth();
+
   const handleLogout = () => {
     logout()
       .then(() => {
@@ -70,11 +71,18 @@ export const NavbarCompo = () => {
                 <div className="w-10 rounded-full">
                   <img
                     alt="Tailwind CSS Navbar component"
-                    src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                    src={user?.photoURL}
                   />
                 </div>
               </div>
               <ul className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content  space-y-2 bg-[#1F2443] rounded-box w-52">
+              <button
+                 
+                  className="justify-between btn btn-sm bg-transparent text-white hover:text-black "
+                >
+                  {user?.displayName}
+                </button>
+
                 <Link to={'dashboard'} className="justify-between cursor-pointer btn btn-sm bg-transparent text-white hover:text-black ">
                   Dashboard
                 </Link>
