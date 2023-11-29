@@ -6,7 +6,7 @@ const ManageUser = () => {
 
   return (
     <div >
-      <div className="md:overflow-x-hidden overflow-x-auto md:h-screen ">
+      <div className="md:overflow-x-hidden overflow-x-auto md:h-screen h-[45vh] ">
         <table className="table md:table-md table-xs">
           <thead>
             <tr>

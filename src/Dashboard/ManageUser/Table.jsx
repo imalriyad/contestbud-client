@@ -6,7 +6,7 @@ import useUserRole from "../../Hooks/useUserRole";
 const Table = ({ user, indx, refetch }) => {
   const { _id, name, email, role, photourl } = user;
   const axiosSecure = useAxiosSecure();
-  const [,,menuUpDate] = useUserRole()
+  const [, , menuUpDate] = useUserRole();
 
   const handleRole = (inputRole) => {
     swal({
@@ -20,13 +20,12 @@ const Table = ({ user, indx, refetch }) => {
         axiosSecure
           .patch(`/update-role/${_id}`, { role: inputRole })
           .then((res) => {
-
             if (res.data.modifiedCount > 0) {
               swal(`${name} is now a ${inputRole}`, {
                 icon: "success",
               });
               refetch();
-              menuUpDate()
+              menuUpDate();
             }
           });
       }
@@ -48,26 +47,38 @@ const Table = ({ user, indx, refetch }) => {
         <td>{email}</td>
         <td>
           <details className="dropdown">
-            <summary className="m-1 btn  btn-sm btn-info ">{role}</summary>
+            <summary className="m-1 btn capitalize  btn-sm btn-info ">{role}</summary>
             <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-24">
-              <li
-                onClick={() => handleRole("creator")}
-                className="btn btn-sm btn-info "
-              >
-                Creator
-              </li>
-              <li
-                onClick={() => handleRole("user")}
-                className="btn btn-sm btn-info mt-2"
-              >
-                user
-              </li>
-              <li
-                onClick={() => handleRole("admin")}
-                className="btn btn-sm btn-info mt-2"
-              >
-                Admin
-              </li>
+              {role === "creator" ? (
+                ""
+              ) : (
+                <li
+                  onClick={() => handleRole("creator")}
+                  className="btn btn-sm btn-info "
+                >
+                  Creator
+                </li>
+              )}
+              {role === "user" ? (
+                ""
+              ) : (
+                <li
+                  onClick={() => handleRole("user")}
+                  className="btn btn-sm btn-info mt-2"
+                >
+                  User
+                </li>
+              )}
+              {role === "admin" ? (
+                ""
+              ) : (
+                <li
+                  onClick={() => handleRole("admin")}
+                  className="btn btn-sm btn-info mt-2"
+                >
+                 Admin
+                </li>
+              )}
             </ul>
           </details>
         </td>

@@ -3,7 +3,7 @@
 "use client";
 import { Button, Card } from "keep-react";
 import { Link } from "react-router-dom";
-export const ContestCard = ({ item }) => {
+export const ContestCard = ({ item ,handleDelete}) => {
   const { _id, contestName, image, participants, contestDetails } = item;
   return (
     <Card className="md:p-6 w-full min-w-full p-5  border-y-gray-200 border-r-gray-200 border-l-8 border-l-[#0ECDB9] ">
@@ -57,6 +57,11 @@ export const ContestCard = ({ item }) => {
            <Link to={`/contest-details/${_id}`}> <Button size="xs" className="bg-[#0ECDB9] ml-8 ">
               View Details
             </Button></Link>
+            {
+              handleDelete?<Button onClick={()=>handleDelete(_id)} size="xs" className="bg-[#0ECDB9] ml-8 ">
+              Delete
+             </Button>:''
+            }
           </div>
         </div>
       </div>
