@@ -17,13 +17,12 @@ const ContestDetails = () => {
     fee,
     // winnerName,
     // winnerImg,
-    endDate,
+    // endDate,
     tags,
     requirements,
   } = loadedContest;
-
+  const specificDate = '2023-12-31'
  
-
   return (
     <div>
       <div
@@ -95,7 +94,7 @@ const ContestDetails = () => {
           {/* Countdown */}
 
           <Countdown
-            date={Date.now() + endDate}
+            date={new Date(specificDate)}
             renderer={({ days, hours, minutes, seconds, completed }) => {
               if (completed) {
                 return (

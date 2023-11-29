@@ -1,6 +1,8 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { FaEdit } from "react-icons/fa";
+import { FaEdit,FaHome } from "react-icons/fa";
 import { FaUserPen } from "react-icons/fa6";
+
+
 import useUserRole from "../Hooks/useUserRole";
 import useAuth from "../Hooks/useAuth";
 
@@ -11,7 +13,18 @@ const Dashboard = () => {
   return (
     <div className="md:flex justify-between gap-4">
       <div className="bg-success min-w-fit menu menu-vertical space-y-2 md:min-h-screen md:pb-0 pb-4 flex flex-col text-white">
-        {/* Admin only */}
+      
+        <NavLink
+              className={
+                "font-medium btn text-sm px-4 mt-6 flex gap-2 items-center"
+              }
+              to={"/"}
+            >
+              Home <FaHome className="text-lg" />
+            </NavLink>
+
+
+              {/* Admin only */}
         {user && userRole?.role === "admin" ? (
           <>
             <NavLink

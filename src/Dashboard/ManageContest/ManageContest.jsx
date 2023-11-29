@@ -1,11 +1,29 @@
 import swal from "sweetalert";
-import useAllContest from "../../Hooks/useAllContest";
 import { ContestCard } from "../../Pages/AllContest/ContestCard";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const ManageContest = () => {
-  const [allContest, , refetch] = useAllContest();
   const axiosSecure = useAxiosSecure();
+
+  const {
+    data: allContest = [],
+    refetch,
+    isPending,
+  } = useQuery({
+    queryKey: ["AllContest"],
+    queryFn: async () => {
+      const res = await axiosSecure("/get-all-contest-admin");
+      return res.data;
+    },
+  });
+
+  if (isPending) {
+    return (
+      <div className="w-16 my-[20%] h-16 mx-auto border-4 border-dashed border-black rounded-full animate-spin border-mainColor"></div>
+    );
+  }
+
   const handleDelete = (id) => {
     swal({
       title: "Are you sure?",
