@@ -58,7 +58,7 @@ const ManageContest = () => {
     }).then((willDelete) => {
       if (willDelete) {
         axiosSecure
-          .patch(`/update-contest-status/${id}`, { status: "confirm" })
+          .patch(`/update-contest-status/${id}`, { status: "accepted" })
           .then((res) => {
             if (res.data.modifiedCount > 0) {
               swal(`Congrats! This Contest has been added!`, {

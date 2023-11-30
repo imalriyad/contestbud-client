@@ -14,6 +14,8 @@ import ManageUser from "../Dashboard/ManageUser/ManageUser";
 import ManageContest from "../Dashboard/ManageContest/ManageContest";
 import CreatorRoute from "../Private/CreatorRoute";
 import AddContest from "../Dashboard/Contest Creator/AddContest";
+import MyContest from "../Dashboard/Contest Creator/MyContest";
+import ParticipitedContest from "../Dashboard/user/ParticipitedContest";
 
 const router = createBrowserRouter([
   {
@@ -71,6 +73,14 @@ const router = createBrowserRouter([
       {
         path: "dashboard/add-contest",
         element:<CreatorRoute><AddContest></AddContest></CreatorRoute>
+      },
+      {
+        path: "dashboard/my-contest",
+        element:<CreatorRoute><MyContest></MyContest></CreatorRoute>
+      },
+      {
+        path: "dashboard/myparticipated-contest",
+        element:<PrivateRoute><ParticipitedContest></ParticipitedContest></PrivateRoute>
       },
     ],
   },

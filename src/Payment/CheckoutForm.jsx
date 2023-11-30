@@ -1,7 +1,7 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useState, useEffect } from "react";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import swal from "sweetalert";
 const CheckoutForm = () => {
@@ -12,6 +12,7 @@ const CheckoutForm = () => {
   const joingContest = useLoaderData();
   const [clientSecret, setClientSecret] = useState("");
   const { user } = useAuth();
+  const navigate= useNavigate()
   const price = joingContest.fee;
   useEffect(() => {
     axiosSecure.post("/create-payment-intent", { price }).then((res) => {
@@ -64,6 +65,7 @@ const CheckoutForm = () => {
           date: new Date(),
           transactonId: paymentIntent.id,
           price: price,
+          joingContest
         };
         const res = await axiosSecure.post("/payment", payment);
         if (res.data.insertedId) {
@@ -74,7 +76,7 @@ const CheckoutForm = () => {
               console.log(res);
               if (res.data.message === 'Participants field updated successfully') {
                 swal("Congrats", "Payment Successful and Registartion Done for this Contest!", "success");
-
+                navigate('/all-contest')
               }
             });
         }

@@ -59,7 +59,7 @@ const Dashboard = () => {
           </NavLink>
           <NavLink
             className={"font-medium btn px-4 flex gap-2 text-sm items-center"}
-            to={"dashboard/my-created-contest"}
+            to={"dashboard/my-contest"}
           >
             My Created Contest <FaEdit className="text-lg" />
           </NavLink>
@@ -87,7 +87,7 @@ const Dashboard = () => {
             className={"font-medium btn px-4 flex gap-2 text-sm items-center"}
             to={"dashboard/my-winning-ontest-page"}
           >
-            My Created Contest <FaEdit className="text-lg" />
+            My Winning Contest <FaEdit className="text-lg" />
           </NavLink>
           <NavLink
             className={"font-medium btn px-4 flex gap-2 text-sm items-center"}

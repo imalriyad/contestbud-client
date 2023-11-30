@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 export const NavbarCompo = () => {
   const { user, logout } = useAuth();
-  console.log(user);
+ 
   const handleLogout = () => {
     logout()
       .then(() => {
