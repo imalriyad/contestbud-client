@@ -41,10 +41,10 @@ export default function TeamSlider() {
         {
           creatoruser?.map((user)=>{
           return  <SwiperSlide key={user._id} className="mx-auto">
-            <div className="md:p-5 h-[240px] p-2 text-center bg-base-100 border rounded-lg md:h-[360px] md:w-[400px]">
+            <div className="md:p-5 h-[200px] p-2 text-center bg-base-100 border rounded-lg md:h-[360px] md:w-[400px]">
               <img
                 src={user?.photourl}
-                className="rounded-lg h-[200px] "
+                className="rounded-lg object-cover w-full h-[100px] md:h-[200px] "
                 alt=""
               />
               <h1 className="md:text-2xl text-sm font-bold mt-6">{user?.name}</h1>

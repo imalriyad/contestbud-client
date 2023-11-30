@@ -16,6 +16,7 @@ import CreatorRoute from "../Private/CreatorRoute";
 import AddContest from "../Dashboard/Contest Creator/AddContest";
 import MyContest from "../Dashboard/Contest Creator/MyContest";
 import ParticipitedContest from "../Dashboard/user/ParticipitedContest";
+import UpdateInfo from "../Dashboard/user/UpdateInfo";
 
 const router = createBrowserRouter([
   {
@@ -35,7 +36,9 @@ const router = createBrowserRouter([
         path: "/cheakout/:id",
         element: <Payment></Payment>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/v1/get-all-contest/${params.id}`),
+          fetch(
+            `https://contest-bud-server.vercel.app/api/v1/get-all-contest/${params.id}`
+          ),
       },
       {
         path: "/contest-details/:id",
@@ -45,7 +48,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/v1/get-all-contest/${params.id}`),
+          fetch(
+            `https://contest-bud-server.vercel.app/api/v1/get-all-contest/${params.id}`
+          ),
       },
       {
         path: "/login",
@@ -59,28 +64,60 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "dashboard/manage-user",
-        element:<AdminRoute><ManageUser></ManageUser></AdminRoute>
+        element: (
+          <AdminRoute>
+            <ManageUser></ManageUser>
+          </AdminRoute>
+        ),
       },
       {
         path: "dashboard/manage-contest",
-        element:<AdminRoute><ManageContest></ManageContest></AdminRoute>
+        element: (
+          <AdminRoute>
+            <ManageContest></ManageContest>
+          </AdminRoute>
+        ),
       },
       {
         path: "dashboard/add-contest",
-        element:<CreatorRoute><AddContest></AddContest></CreatorRoute>
+        element: (
+          <CreatorRoute>
+            <AddContest></AddContest>
+          </CreatorRoute>
+        ),
       },
       {
         path: "dashboard/my-contest",
-        element:<CreatorRoute><MyContest></MyContest></CreatorRoute>
+        element: (
+          <CreatorRoute>
+            <MyContest></MyContest>
+          </CreatorRoute>
+        ),
       },
       {
         path: "dashboard/myparticipated-contest",
-        element:<PrivateRoute><ParticipitedContest></ParticipitedContest></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <ParticipitedContest></ParticipitedContest>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "dashboard/update-info",
+        element: (
+          <PrivateRoute>
+            <UpdateInfo></UpdateInfo>
+          </PrivateRoute>
+        ),
       },
     ],
   },

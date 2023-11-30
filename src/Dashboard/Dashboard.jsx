@@ -91,7 +91,7 @@ const Dashboard = () => {
           </NavLink>
           <NavLink
             className={"font-medium btn px-4 flex gap-2 text-sm items-center"}
-            to={"dashboard/my-profile"}
+            to={"dashboard/update-info"}
           >
             My Profile
             <FaEdit className="text-lg" />
