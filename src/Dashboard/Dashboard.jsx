@@ -83,12 +83,12 @@ const Dashboard = () => {
             My Participated Contest
             <FaUserPen className="text-lg" />
           </NavLink>
-          <NavLink
+          {/* <NavLink
             className={"font-medium btn px-4 flex gap-2 text-sm items-center"}
             to={"dashboard/my-winning-ontest-page"}
           >
             My Winning Contest <FaEdit className="text-lg" />
-          </NavLink>
+          </NavLink> */}
           <NavLink
             className={"font-medium btn px-4 flex gap-2 text-sm items-center"}
             to={"dashboard/update-info"}

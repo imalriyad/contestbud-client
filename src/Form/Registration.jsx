@@ -114,7 +114,7 @@ const Registration = () => {
               {...register("password", {
                 required: true,
                 pattern:
-                  /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+])[A-Za-z0-9!@#$%^&*()_+]+$/,
+                  /^(?=.*[0-9])(?=.*[!@#$%^&*()_+])[A-Za-z0-9!@#$%^&*()_+]+$/,
               })}
               placeholder="Password"
               className="w-full px-4 py-3 rounded-md  "

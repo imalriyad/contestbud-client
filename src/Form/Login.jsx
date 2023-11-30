@@ -10,7 +10,7 @@ const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const { state } = useLocation();
-   
+
   const {
     register,
     handleSubmit,
@@ -76,8 +76,6 @@ const Login = () => {
               id="password"
               {...register("password", {
                 required: true,
-                pattern:
-                  /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+])[A-Za-z0-9!@#$%^&*()_+]+$/,
               })}
               placeholder="Password"
               className="w-full px-4 py-3 rounded-md  "
@@ -90,11 +88,6 @@ const Login = () => {
             {errors.password?.type === "required" && (
               <p role="alert" className="text-red-500">
                 Password is required
-              </p>
-            )}
-            {errors.password?.type === "pattern" && (
-              <p role="alert" className="text-red-500">
-                Passsword Should have one Symbol ,captial latter and number
               </p>
             )}
           </div>
