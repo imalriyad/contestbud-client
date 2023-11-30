@@ -2,12 +2,13 @@
 import swal from "sweetalert";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useUserRole from "../../Hooks/useUserRole";
+import { useNavigate } from "react-router-dom";
 
 const Table = ({ user, indx, refetch }) => {
   const { _id, name, email, role, photourl } = user;
   const axiosSecure = useAxiosSecure();
   const [, , menuUpDate] = useUserRole();
-
+  const navigate= useNavigate()
   const handleRole = (inputRole) => {
     swal({
       title: "Are you sure?",
@@ -24,8 +25,10 @@ const Table = ({ user, indx, refetch }) => {
               swal(`${name} is now a ${inputRole}`, {
                 icon: "success",
               });
+              navigate('/')
               refetch();
               menuUpDate();
+             
             }
           });
       }

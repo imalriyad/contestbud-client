@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Google from "./Google";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
@@ -12,7 +12,7 @@ import auth from "../Firebase/firebase.config";
 const Registration = () => {
   const axiosPublic = useAxiosPublic();
   const { registeration } = useAuth();
-
+ const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -29,6 +29,7 @@ const Registration = () => {
         updateProfile(auth.currentUser, {
           displayName: data.name,
           photoURL: data.photourl,
+          
         })
           .then(async () => {
             const res = await axiosPublic.post("/create-user", data);
@@ -43,6 +44,8 @@ const Registration = () => {
                 progress: undefined,
                 theme: "light",
               });
+
+              navigate('/')
             }
           })
           .catch((err) =>

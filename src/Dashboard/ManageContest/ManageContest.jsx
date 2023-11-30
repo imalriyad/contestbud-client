@@ -3,9 +3,10 @@ import { ContestCard } from "../../Pages/AllContest/ContestCard";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 
+
 const ManageContest = () => {
   const axiosSecure = useAxiosSecure();
-
+  
   const {
     data: allContest = [],
     refetch,
@@ -40,6 +41,7 @@ const ManageContest = () => {
               icon: "success",
             });
             refetch();
+            
           }
         });
       }
@@ -63,6 +65,7 @@ const ManageContest = () => {
                 icon: "success",
               });
               refetch();
+
             }
           });
       }
