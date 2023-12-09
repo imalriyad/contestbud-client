@@ -1,8 +1,13 @@
-# React + Vite
+### ContestBud
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Contest Bud is a website where users may participate in contests.
 
-Currently, two official plugins are available:
+- The creator position has the ability to establish new contest
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Admin can dismiss a users, and alter user roles, such as creating an admin and creator role.
+
+- All the contest has Deadline and its daynamic
+
+- I have used React, tailwind css, mongodb, nodejs
+
+- Live Link : https://contestbud-e8389.web.app
